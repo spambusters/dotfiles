@@ -18,7 +18,7 @@ alias vim="nvim"
 
 alias mp3="youtube-dl -x --audio-format mp3"
 alias youtube="mpv --ytdl-format=22"
-alias twitch="mpv --ytdl-format 720p"
+alias twitch="mpv --ytdl-format=720p"
 
 alias update="sudo pacman -Syy"
 alias upgrade="sudo pacman -Su"
