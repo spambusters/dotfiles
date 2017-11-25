@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "editor.fontFamily": "'Ubuntu Mono', 'Fira Code', 'IBM Plex Mono', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "git.path": "/usr/bin/git",
+    "editor.fontSize": 19,
+    "editor.rulers": [
+        79
+    ],
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "terminal.integrated.fontSize": 16,
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "typescript.check.npmIsInstalled": false,
+    "zenMode.hideTabs": false,
+    "workbench.startupEditor": "newUntitledFile"
+}
