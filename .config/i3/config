@@ -108,7 +108,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Prevent window focus from following mouse
-focus_follows_mouse no
+# focus_follows_mouse no
 
 # focus the parent container
 bindsym $mod+a focus parent
