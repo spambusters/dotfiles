@@ -121,7 +121,7 @@ workspace_auto_back_and_forth yes
 workspace_layout default
 
 # With the for_window command, you can let i3 execute any command when it encounters a specific window. This can be used to set windows to floating or to change their border style, for example.
-# for_window [class="Mate-terminal"] floating enable
+for_window [class="mpv"] floating enable
 
 # If you want a window to stick to the glass, i.e., have it stay on screen even if you switch to another workspace, you can use the sticky command. For example, this can be useful for notepads, a media player or a video chat window.
 # Note that while any window can be made sticky through this command, it will only take effect if the window is floating.
@@ -255,4 +255,7 @@ smart_borders on
 
 exec_always --no-startup-id $HOME/dotfiles/.config/polybar/launch.sh
 exec --no-startup-id $HOME/.fehbg
-exec --no-startup-id compton -b
+
+# To autostart compton as a background (Daemon) process for a session, the -b argument must be used.
+# To disable all shadowing effects from the Daemon process, the -C and -G arguments must again be added.
+exec --no-startup-id compton --config $HOME/.config/compton/compton.conf -CGb
