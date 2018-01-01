@@ -45,7 +45,7 @@ line-size = 2
 border-left-size = 0
 border-top-size = 0
 border-right-size = 0
-border-bottom-size = 0
+border-bottom-size = 8
 border-color = #00000000
 
 padding-left = 0
