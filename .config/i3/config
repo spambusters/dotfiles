@@ -51,10 +51,14 @@ bindsym $alt+Tab exec rofi -show window
 bindsym $mod+b exec firefox
 
 # Audacious next song
-bindsym F9 exec audtool --playlist-advance
+# bindsym F9 exec audtool --playlist-advance
 
 # Audacious pause
-bindsym XF86AudioPlay exec audtool --playback-pause
+# bindsym XF86AudioPlay exec audtool --playback-pause
+
+# Screenshot
+bindsym $alt+Print exec scrot -s
+bindsym Print exec scrot
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -130,12 +134,12 @@ for_window [class="mpv"] floating enable
 #
 # Create variables for workspace names
 set $ws1 "1:"
-set $ws2 "2:"
+set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6:"
-set $ws7 "7:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
 set $ws8 "8:"
 set $ws9 "9:"
 set $ws10 "10:"
@@ -166,13 +170,11 @@ bindsym $mod+Shift+0 move container to workspace 1$ws0
 
 # Open applications on specific workspaces
 assign [class="Firefox"] $ws1
-assign [class="Pcmanfm"] $ws2
-assign [class="Audacious"] $ws3
-assign [class="Code"] $ws4
-assign [class="mpv"] $ws5
-assign [class="VirtualBox Manager"] $ws6
-assign [class="VirtualBox Machine"] $ws6
-assign [class="Shotwell"] $ws7
+assign [class="Code"] $ws2
+# assign [class="Audacious"] $ws3
+assign [class="mpv"] $ws4
+assign [class="VirtualBox Manager"] $ws5
+assign [class="Shotwell"] $ws6
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -239,15 +241,17 @@ new_window pixel 2
 # ++++++++++++++++
 
 #gaps inner|outer current|all set|plus|minus <px>
-gaps inner 5
-gaps outer 5
+# gaps inner 16
+# gaps outer 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 #smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
+
+hide_edge_borders smart
 
 # ++++++++++++++++
 # Autostart apps +
@@ -259,3 +263,22 @@ exec --no-startup-id $HOME/.fehbg
 # To autostart compton as a background (Daemon) process for a session, the -b argument must be used.
 # To disable all shadowing effects from the Daemon process, the -C and -G arguments must again be added.
 exec --no-startup-id compton --config $HOME/.config/compton/compton.conf -CGb
+
+set $Locker i3lock -i $HOME/Pictures/wallpaper.png && sleep 1
+
+set $mode_system (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
+
+#xautolock -time 5 -locker "i3lock -i '$HOME/Pictures/arch.png'" &
